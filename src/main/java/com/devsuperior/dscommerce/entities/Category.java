@@ -54,24 +54,23 @@ public class Category {
 		return products;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, name, products);
-	}
+	
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Category other = (Category) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& Objects.equals(products, other.products);
-	}
+	public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Category category = (Category) o;
+
+        return Objects.equals(id, category.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+    
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", name=" + name + ", products=" + products + "]";
