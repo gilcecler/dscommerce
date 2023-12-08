@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.devsuperior</groupId>
-	<artifactId>dscommerce-cap02</artifactId>
+	<artifactId>dscommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dscommerce-cap02</name>
-	<description>Demo project for Spring Boot</description>
+	<name>dscommerce</name>
+	<description>Dscommerce</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
