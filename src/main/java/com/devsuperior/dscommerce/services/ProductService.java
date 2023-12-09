@@ -12,21 +12,38 @@ import com.devsuperior.dscommerce.repositories.ProductRepository;
 
 @Service
 public class ProductService {
-	
+
 	@Autowired
 	private ProductRepository repository;
-	
-	 @Transactional(readOnly = true)
-	public ProductDTO findById (Long id ) {
+
+	@Transactional(readOnly = true)
+	public ProductDTO findById(Long id) {
 		Product product = repository.findById(id).get();
 		return new ProductDTO(product);
-		
+
 	}
 
-	 @Transactional(readOnly = true)
-	public Page<ProductDTO> findAll (Pageable pageable ) {
+	@Transactional(readOnly = true)
+	public Page<ProductDTO> findAll(Pageable pageable) {
 		Page<Product> result = repository.findAll(pageable);
 		return result.map(x -> new ProductDTO(x));
+
+	}
+
+	@Transactional
+	public ProductDTO  insert(ProductDTO dto) {
+		Product entity = new Product();
+        copyDtoToEntity(dto, entity);
+        entity = repository.save(entity);
+        return new ProductDTO(entity);
+		
 		
 	}
+	
+	private void copyDtoToEntity(ProductDTO dto, Product entity) {
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setPrice(dto.getPrice());
+        entity.setImgUrl(dto.getImgUrl());
+    }
 }
