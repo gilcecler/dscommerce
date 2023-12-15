@@ -26,11 +26,18 @@ public class ProductController {
 	}
 
 	@GetMapping
+	public ResponseEntity<Page<ProductDTO>> findAll(
+		@RequestParam(name="name", defaultValue ="") String name,Pageable pageable) {
+		
+		Page<ProductDTO> dto = service.findAll(name, pageable);
+		return ResponseEntity.ok(dto);
+	}
+	/* old
 	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
 		Page<ProductDTO> dto = service.findAll(pageable);
 		return ResponseEntity.ok(dto);
 
-	}
+	}*/
 
 	@PostMapping
 	public ResponseEntity<ProductDTO> insert(@RequestBody @Valid ProductDTO dto) {
@@ -47,7 +54,7 @@ public class ProductController {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@PathVariable Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 
