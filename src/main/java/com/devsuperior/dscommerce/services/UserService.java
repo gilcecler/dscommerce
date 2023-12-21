@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.devsuperior.demo.entities.Role;
 import com.devsuperior.demo.entities.User;
-import com.devsuperior.demo.projections.UserDetailsProjection;
 import com.devsuperior.demo.repositories.UserRepository;
+import com.devsuperior.dscommerce.projections.UserDetailsProjection;
 
 @Service
 public class UserService implements UserDetailsService {
